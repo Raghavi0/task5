@@ -1,0 +1,61 @@
+# create patients table
+CREATE TABLE patients (
+    patient_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    doctor_id INT
+);
+
+
+#create doctors table
+CREATE TABLE doctors (
+    doctor_id INT PRIMARY KEY,
+    doctor_name VARCHAR(50),
+    specialization VARCHAR(50)
+);
+
+
+#insert values to both the tables:
+INSERT INTO patients (patient_id, name, doctor_id) VALUES
+(1, 'John Doe', 101),
+(2, 'Jane Smith', 102),
+(3, 'Alex Brown', NULL),
+(4, 'Emma White', 104);
+
+
+INSERT INTO doctors (doctor_id, doctor_name, specialization) VALUES
+(101, 'Dr. Adams', 'Cardiology'),
+(102, 'Dr. Blake', 'Neurology'),
+(103, 'Dr. Clark', 'Orthopedics'),
+(104, 'Dr. Davis', 'Dermatology');
+
+
+#Inner Join:
+SELECT p.name AS patient_name, d.doctor_name, d.specialization
+FROM patients p
+INNER JOIN doctors d ON p.doctor_id = d.doctor_id;
+
+
+#Left Join:
+SELECT p.name AS patient_name, d.doctor_name, d.specialization
+FROM patients p
+LEFT JOIN doctors d ON p.doctor_id = d.doctor_id;
+
+
+#Right Join:
+SELECT p.name AS patient_name, d.doctor_name, d.specialization
+FROM patients p
+RIGHT JOIN doctors d ON p.doctor_id = d.doctor_id;
+
+
+#Full Join:
+-- LEFT JOIN part
+SELECT p.name AS patient_name, d.doctor_name, d.specialization
+FROM patients p
+LEFT JOIN doctors d ON p.doctor_id = d.doctor_id
+
+UNION
+
+-- RIGHT JOIN part
+SELECT p.name AS patient_name, d.doctor_name, d.specialization
+FROM patients p
+RIGHT JOIN doctors d ON p.doctor_id = d.doctor_id;
