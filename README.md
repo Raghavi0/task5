@@ -4,3 +4,6 @@ Inner Join--step 3
 Left Join--step 4
 Right Join--step 5
 Full Jpoin--step 6
+
+
+I have added all the quries in notepad and task5 pdf contain all the sql quries and resulted tables.
